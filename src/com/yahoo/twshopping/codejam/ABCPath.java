@@ -56,76 +56,74 @@ public class ABCPath {
     
     public int findPathLength(String[] matrix, int currentLine, int currentIndex, int pos, int len, boolean hasNext) {
         
-        if (!hasNext || len==26) {
-            return len;
-        }
+        if (!hasNext || len==26) return len;
         else {
             switch(getPosition(matrix, currentLine, currentIndex)) {
             case F_FC:
-                if(findRight(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentIndex++; hasNext=true;} // right
-                else if (findDown(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++;hasNext=true;}  // down
-                else if (findRightDownDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++; currentIndex++;hasNext=true;} //right down dia
+                if(findRight(matrix, currentLine, currentIndex, pos))              {len++; pos++; currentIndex++; hasNext=true;}
+                else if (findDown(matrix, currentLine, currentIndex, pos))         {len++; pos++; currentLine++;hasNext=true;}
+                else if (findRightDownDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++; currentIndex++;hasNext=true;}
                 else hasNext = false;                
                 break;
             case F_LC:
-                if(findLeft(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentIndex--;hasNext=true;} // left
-                else if (findDown(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++;hasNext=true;}  // down
-                else if (findLeftDownDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++; currentIndex--;hasNext=true;} //left down dia
+                if(findLeft(matrix, currentLine, currentIndex, pos))              {len++; pos++; currentIndex--;hasNext=true;}
+                else if (findDown(matrix, currentLine, currentIndex, pos))        {len++; pos++; currentLine++;hasNext=true;}
+                else if (findLeftDownDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++; currentIndex--;hasNext=true;}
                 else hasNext = false;                
                 break;
             case F_MC:
-                if(findRight(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentIndex++;hasNext=true;} // right
-                else if(findLeft(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentIndex--;hasNext=true;} // left
-                else if (findDown(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++;hasNext=true;}  // down
-                else if (findRightDownDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++; currentIndex++;hasNext=true;} //right down dia
-                else if (findLeftDownDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++; currentIndex--;hasNext=true; } //left down dia
+                if(findRight(matrix, currentLine, currentIndex, pos))              {len++; pos++; currentIndex++;hasNext=true;} 
+                else if(findLeft(matrix, currentLine, currentIndex, pos))          {len++; pos++; currentIndex--;hasNext=true;}
+                else if (findDown(matrix, currentLine, currentIndex, pos))         {len++; pos++; currentLine++;hasNext=true;}
+                else if (findRightDownDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++; currentIndex++;hasNext=true;}
+                else if (findLeftDownDia(matrix, currentLine, currentIndex, pos))  {len++; pos++; currentLine++; currentIndex--;hasNext=true; }
                 else hasNext = false;                
                 break;
             case L_FC:
-                if(findRight(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentIndex++;hasNext=true;} //right
-                else if (findUp(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--;hasNext=true;}  //up
-                else if (findRightUpDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--; currentIndex++;hasNext=true;} // right up dia
+                if(findRight(matrix, currentLine, currentIndex, pos))            {len++; pos++; currentIndex++;hasNext=true;}
+                else if (findUp(matrix, currentLine, currentIndex, pos))         {len++; pos++; currentLine--;hasNext=true;}
+                else if (findRightUpDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--; currentIndex++;hasNext=true;}
                 else hasNext = false;                
                 break;
             case L_LC:
-                if(findLeft(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentIndex--;hasNext=true;} //left
-                else if (findUp(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--;hasNext=true;}  //up
-                else if (findLeftUpDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--; currentIndex--;hasNext=true;} // left up dia
+                if(findLeft(matrix, currentLine, currentIndex, pos))            {len++; pos++; currentIndex--;hasNext=true;}
+                else if (findUp(matrix, currentLine, currentIndex, pos))        {len++; pos++; currentLine--;hasNext=true;}
+                else if (findLeftUpDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--; currentIndex--;hasNext=true;}
                 else hasNext = false;                
                 break;
             case L_MC:
-                if(findRight(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentIndex++;hasNext=true;} //right
-                else if(findLeft(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentIndex--;hasNext=true;} //left
-                else if (findUp(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--;hasNext=true;}  //up
-                else if (findLeftUpDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--; currentIndex--;hasNext=true;} // left up dia                          
-                else if (findRightUpDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--; currentIndex++;hasNext=true;} // right up dia
+                if(findRight(matrix, currentLine, currentIndex, pos))            {len++; pos++; currentIndex++;hasNext=true;}
+                else if(findLeft(matrix, currentLine, currentIndex, pos))        {len++; pos++; currentIndex--;hasNext=true;}
+                else if (findUp(matrix, currentLine, currentIndex, pos))         {len++; pos++; currentLine--;hasNext=true;}
+                else if (findLeftUpDia(matrix, currentLine, currentIndex, pos))  {len++; pos++; currentLine--; currentIndex--;hasNext=true;}                          
+                else if (findRightUpDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--; currentIndex++;hasNext=true;}
                 else hasNext = false;                
                 break;
             case M_FC:
-                if(findRight(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentIndex++;hasNext=true;} // right
-                else if (findDown(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++;hasNext=true;}  // down
-                else if (findUp(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--;hasNext=true;}  //up
-                else if (findRightDownDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++; currentIndex++;hasNext=true;} //right down dia
-                else if (findRightUpDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--; currentIndex++;hasNext=true;} //right up dia
+                if(findRight(matrix, currentLine, currentIndex, pos))              {len++; pos++; currentIndex++;hasNext=true;}
+                else if (findDown(matrix, currentLine, currentIndex, pos))         {len++; pos++; currentLine++;hasNext=true;} 
+                else if (findUp(matrix, currentLine, currentIndex, pos))           {len++; pos++; currentLine--;hasNext=true;}
+                else if (findRightDownDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++; currentIndex++;hasNext=true;}
+                else if (findRightUpDia(matrix, currentLine, currentIndex, pos))   {len++; pos++; currentLine--; currentIndex++;hasNext=true;}
                 else hasNext = false;                
                 break;
             case M_LC:
-                if(findLeft(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentIndex--;hasNext=true;} // left
-                else if (findDown(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++;hasNext=true;}  // down
-                else if (findUp(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--;hasNext=true;}  //up
-                else if (findLeftDownDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++; currentIndex--;hasNext=true;} //left down dia
-                else if (findLeftUpDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--; currentIndex--;hasNext=true;} //left up dia
+                if(findLeft(matrix, currentLine, currentIndex, pos))              {len++; pos++; currentIndex--;hasNext=true;} 
+                else if (findDown(matrix, currentLine, currentIndex, pos))        {len++; pos++; currentLine++;hasNext=true;}
+                else if (findUp(matrix, currentLine, currentIndex, pos))          {len++; pos++; currentLine--;hasNext=true;}
+                else if (findLeftDownDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++; currentIndex--;hasNext=true;}
+                else if (findLeftUpDia(matrix, currentLine, currentIndex, pos))   {len++; pos++; currentLine--; currentIndex--;hasNext=true;}
                 else {hasNext = false;}                
                 break;
             case M_MC:
-                if(findRight(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentIndex++;hasNext=true;} // right
-                else if(findLeft(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentIndex--;hasNext=true;} // left
-                else if (findDown(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++;hasNext=true;}  // down
-                else if (findUp(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--;hasNext=true;}  //up
-                else if (findRightDownDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++; currentIndex++;hasNext=true;} //right down dia
-                else if (findRightUpDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--; currentIndex++;hasNext=true;} //right up di
-                else if (findLeftDownDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++; currentIndex--;hasNext=true;} //left down dia
-                else if (findLeftUpDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine--; currentIndex--;hasNext=true;} //left up dia
+                if(findRight(matrix, currentLine, currentIndex, pos))              {len++; pos++; currentIndex++;hasNext=true;} 
+                else if(findLeft(matrix, currentLine, currentIndex, pos))          {len++; pos++; currentIndex--;hasNext=true;}
+                else if (findDown(matrix, currentLine, currentIndex, pos))         {len++; pos++; currentLine++;hasNext=true;}
+                else if (findUp(matrix, currentLine, currentIndex, pos))           {len++; pos++; currentLine--;hasNext=true;}
+                else if (findRightDownDia(matrix, currentLine, currentIndex, pos)) {len++; pos++; currentLine++; currentIndex++;hasNext=true;}
+                else if (findRightUpDia(matrix, currentLine, currentIndex, pos))   {len++; pos++; currentLine--; currentIndex++;hasNext=true;}
+                else if (findLeftDownDia(matrix, currentLine, currentIndex, pos))  {len++; pos++; currentLine++; currentIndex--;hasNext=true;}
+                else if (findLeftUpDia(matrix, currentLine, currentIndex, pos))    {len++; pos++; currentLine--; currentIndex--;hasNext=true;}
                 else {hasNext = false;}                
                 break;                
             }
