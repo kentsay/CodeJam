@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.yahoo.twshopping.test;
 
 import static org.junit.Assert.assertEquals;
@@ -9,15 +6,8 @@ import org.junit.Test;
 
 import com.yahoo.twshopping.codejam.ABCPath;
 
-/**
- * Description of the class.
- *
- * @author $Id: kentsay$
- * @version $Revision: 1$
- *
- */
 public class ABCPathTest {
-
+    
     @Test
     public void testCase1()
     {
